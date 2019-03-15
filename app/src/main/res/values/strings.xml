@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BEL Test</string>
+    <string name="ID_CAPTION_START_SCAN">Start Scan</string>
+    <string name="ID_CAPTION_STOP_SCAN">Stop Scan</string>
+</resources>

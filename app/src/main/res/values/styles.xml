@@ -1,0 +1,24 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- Widget styles -->
+    <style name="DeviceListContent">
+        <item name="android:textSize">@dimen/devices_list_fontsize</item>
+    </style>
+
+    <style name="DeviceInfoContent">
+        <item name="android:textSize">@dimen/device_info_fontsize</item>
+    </style>
+
+    <style name="DeviceInfoListContent">
+        <item name="android:textSize">@dimen/device_info_list_fontsize</item>
+    </style>
+
+</resources>

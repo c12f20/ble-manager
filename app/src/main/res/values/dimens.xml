@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Main Activity -->
+    <dimen name="devices_list_hpadding">10dp</dimen>
+    <dimen name="devices_list_fontsize">20sp</dimen>
+    <dimen name="devices_list_item_height">60dp</dimen>
+    <!-- Device Info Activity -->
+    <dimen name="device_info_hpadding">10dp</dimen>
+    <dimen name="device_info_fontsize">20sp</dimen>
+    <dimen name="device_info_list_fontsize">14sp</dimen>
+</resources>
