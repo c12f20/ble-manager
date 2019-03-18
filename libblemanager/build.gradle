@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
 
 android {
     compileSdkVersion 28
@@ -32,3 +34,81 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
+
+def siteURL = "https://github.com/c12f20/ble-manager"
+def gitURL = "https://github.com/c12f20/ble-manager.git"
+group = "com.hill.libblemanager"
+version = "1.0.0"
+
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+                // Add your description here
+                name 'An Android Bluetooth LE Manager Library'
+                url siteURL
+                // Set your license
+                licenses {
+                    license {
+                        name 'Apache License Version 2.0'
+                        url 'https://opensource.org/licenses/Apache-2.0'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'c12f20'
+                        name 'Hill'
+                        email 'c12f20@gmail.com'
+                    }
+                }
+                scm {
+                    connection gitURL
+                    developerConnection gitURL
+                    url siteURL
+                }
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    from javadoc.destinationDir
+    classifier = 'javadoc'
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
+Properties props = new Properties()
+props.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = props.getProperty('bintray.user')
+    key = props.getProperty('bintray.apikey')
+    configurations = ['archives']
+    pkg {
+        userOrg = 'hillcen'
+        repo = 'BluetoothLE'
+        name = 'BLEManager'
+        websiteUrl = siteURL
+        vcsUrl = gitURL
+        licenses = ['Apache-2.0']
+        publish = true
+    }
+}
+
+
